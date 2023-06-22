@@ -1,0 +1,29 @@
+.l-side-nav{
+    grid-area: side-nav;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background: var(--mono---white);
+    border-right:1px solid var(--gray---gray-200) ;
+    width: 24rem;
+    &__header{
+        border-bottom:1px solid var(--gray---gray-200) ;
+        height: var(--header--height);
+    }
+    &__logo{
+        height: 7.2rem;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: var(--space--lg);
+        flex:1;
+    }
+    &__nav-items{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: var(--space--xs);
+    }
+}

@@ -1,0 +1,23 @@
+body{
+  background-color: var(--gray---gray-50);
+}
+html{
+  overflow: hidden;
+}
+.l-app{
+  display: grid;
+  grid-template-columns: auto 1fr ;
+  grid-column-gap: 1px;
+  grid-template-areas:
+   " side-nav app-body";
+  height: var(--app-height);
+  overflow: hidden;
+  background-color: var(--gray---gray-50);
+  &__body{
+    grid-area: app-body;
+    //height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    //min-height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    overflow: auto;
+  }
+}
+
