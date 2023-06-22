@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 
+//calling and mapping filtered student list
 const FilteredStudents = ({students}) => {
     const [search, setSearch] = useState('');
 return(
@@ -27,7 +28,7 @@ return(
                       <tr>
                         <th>Student_Index</th>
                         <th>Name</th>
-                        <th>Age</th>
+                        <th>Birth Date</th>
                         <th>Reg_Date</th>
                         <th>Actions</th>
                       </tr>

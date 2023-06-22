@@ -5,7 +5,7 @@ import FilteredStudents from './FilteredStudents';
 
 const StudentFilter = ({studentList, ageLimit, minAge}) =>{
     const [filteredStudents, setFilteredStudents] = useState([]);
-
+// function to Filtering  Students array of data according to their age between min and max age
     useEffect(() =>{
       const filtered = studentList?.filter((student)=>{
       const today= new Date();

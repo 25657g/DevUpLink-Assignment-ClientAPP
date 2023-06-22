@@ -15,12 +15,12 @@ const getAllStudents = (token) => {
     return Axios.get("/Student/" +studentID, {headers: headers});
   };
 
-  const editStudentById = (studentID, token, studentData) =>{
+  const editStudentById = (studentID, token, Data) =>{
     const headers = {
       // 'Content-Type': 'application/json',
       'Authorization': 'Bearer ' +token 
     }
-    return Axios.put("/Student/" +studentID, studentData, {headers: headers});
+    return Axios.put("/Student/" +studentID, Data, {headers: headers});
   };
   const studentService = {
     getAllStudents,

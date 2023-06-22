@@ -6,9 +6,25 @@ const getAllUsers = (token) => {
     }
     return Axios.get("/Users",{headers:headers});
   };
+  const editUserById = (id, token, userData) =>{
+    const headers = {
+      // 'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' +token 
+    }
+    return Axios.put("/Users/" +id, userData, {headers: headers});
+  };
 
+  const createUser = ( token, userData) =>{
+    const headers = {
+      // 'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' +token 
+    }
+    return Axios.post("/Users/register" , userData, {headers: headers});
+  };
   const userService = {
-    getAllUsers
+    getAllUsers,
+    editUserById,
+    createUser
 
 };
 

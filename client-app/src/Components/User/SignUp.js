@@ -13,6 +13,8 @@ import CardContent from "@mui/material/CardContent";
 import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Axios from '../../routes/axios';
+import userService from '../../routes/userServiceRoutes';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 
 
@@ -25,15 +27,13 @@ export default function SignUp() {
     const navigateTo = useNavigate();
     const userRef = useRef();
     const errRef = useRef();
-
-    
+    const { auth } = useAuthContext();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [conpassword, setConPassword] = useState("");
-    
-
+    const [userData, setUser] = useState();
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
@@ -41,28 +41,29 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
       e.preventDefault();
      
-      try {
-          const response = await Axios.post(REGISTER_URL,
-              JSON.stringify({ firstName, lastName, email,  password}),
-              {
-                  headers: { 'Content-Type': 'application/json' },
-              }
-          );
-          navigateTo("/");
-          // TODO: remove console.logs before deployment
-          console.log(JSON.stringify(response?.data));
-          //console.log(JSON.stringify(response))
-          setSuccess(true);
-      } catch (err) {
-          if (!err?.response) {
-              setErrMsg('No Server Response');
-          } else if (err.response?.status === 409) {
-              setErrMsg('Username Taken');
-          } else {
-              setErrMsg('Registration Failed')
-          }
-          
-      }
+      let userData = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+    };
+        
+   
+    try {
+        const token = auth.user.token;
+        userService
+            .createUser(token, userData)
+            .then((res) => {
+            console.log("Successfully added a user ");
+            navigateTo("/");
+            })
+            .catch((error) => {
+            console.log(error);
+            });
+        
+    } catch (err) {
+        console.log(err) ;
+    }
   }
 
   

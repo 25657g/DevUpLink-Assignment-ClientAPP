@@ -15,6 +15,7 @@ import Category from './Pages/Category';
 import SignUp from './Components/User/SignUp';
 import RegisterStudent from './Components/Student/RegisterStudent';
 import EditDetails from './Components/Student/EditDetails';
+import EditUser from './Components/User/EditUser';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/categories" element={<Category />}></Route>
             <Route path="/home/register" element={<RegisterStudent />}></Route>
             <Route path="/home/editdetails" element={<EditDetails />}></Route>
+            <Route path="/admin/edituser" element={<EditUser />}></Route>
             
             
 
