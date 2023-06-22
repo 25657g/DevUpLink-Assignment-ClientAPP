@@ -28,10 +28,10 @@ function App() {
             {/* public routes */}
             
             <Route path="/" element={<Login />}></Route>
-
-            <Route element={RequireAuth}>
-            <Route path="/admin/signup" element={<SignUp />}></Route>
+            <Route element={<RequireAuth/>}>
             <Route path="/home" element={<Home />}></Route>
+            <Route path="/admin/signup" element={<SignUp />}></Route>
+            
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/categories" element={<Category />}></Route>
             <Route path="/home/register" element={<RegisterStudent />}></Route>
