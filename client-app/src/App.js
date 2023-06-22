@@ -16,6 +16,7 @@ import SignUp from './Components/User/SignUp';
 import RegisterStudent from './Components/Student/RegisterStudent';
 import EditDetails from './Components/Student/EditDetails';
 import EditUser from './Components/User/EditUser';
+import RequireAuth from './Components/RequireAuth';
 
 
 function App() {
@@ -25,15 +26,18 @@ function App() {
           <Route path="/" element={<Layout/>}>
             
             {/* public routes */}
-            <Route path="/admin/signup" element={<SignUp />}></Route>
+            
             <Route path="/" element={<Login />}></Route>
+
+            <Route element={RequireAuth}>
+            <Route path="/admin/signup" element={<SignUp />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/categories" element={<Category />}></Route>
             <Route path="/home/register" element={<RegisterStudent />}></Route>
             <Route path="/home/editdetails" element={<EditDetails />}></Route>
             <Route path="/admin/edituser" element={<EditUser />}></Route>
-            
+            </Route>
             
 
 
